@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
+import analyzer from "@next/bundle-analyzer";
+const withAnalyzer = analyzer({ enabled: process.env.ANALYZE === "true" });
 
 const nextConfig: NextConfig = {
-  /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
@@ -14,4 +15,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withAnalyzer(nextConfig);
